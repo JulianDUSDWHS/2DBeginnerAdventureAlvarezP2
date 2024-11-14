@@ -34,12 +34,22 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
-        if(vertical)
+        if (vertical)
         {
-            position.y = position.y + Time.deltaTime * speed;
+            position.y = position.y + Time.deltaTime * speed * direction;
         }
-        position.x = position.x + Time.deltaTime * speed;
-
+        else
+        {
+            position.x = position.x + Time.deltaTime * speed * direction;
+        }
         rigidbody2d.MovePosition(position);
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.ChangeHealth(-1);
+        }
     }
 }
