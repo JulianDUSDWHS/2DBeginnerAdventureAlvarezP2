@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int maxHealth = 5;
-    public float timeInvincible = 2;
+    public float timeInvincible = 2.0f;
     public int health { get { return currentHealth; } }
     int currentHealth;
 
@@ -69,6 +69,8 @@ public class PlayerController : MonoBehaviour
     {
         if(amount < 0)
         {
+            animator.SetTrigger("Hit");
+
             if(isInvincible)
             {
                 return;
