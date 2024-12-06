@@ -58,7 +58,10 @@ public class PlayerController : MonoBehaviour
                 isInvincible = false;
             }
         }
-        
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            Launch();
+        }
     }
     void FixedUpdate()
     {
@@ -91,6 +94,6 @@ public class PlayerController : MonoBehaviour
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
 
-        animator.SetTrigger("Lanuch");
+        animator.SetTrigger("Launch");
     }
 }
